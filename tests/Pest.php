@@ -11,10 +11,20 @@
 |
 */
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+
 uses(
     Tests\TestCase::class,
     // Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Feature');
+
+uses(
+    Tests\TestCase::class,
+    // Illuminate\Foundation\Testing\RefreshDatabase::class,
+)->in('Unit');
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +40,7 @@ uses(
 expect()->extend('toBeOne', function () {
     return $this->toBe(1);
 });
+
 
 /*
 |--------------------------------------------------------------------------
