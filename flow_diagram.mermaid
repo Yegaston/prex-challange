@@ -1,0 +1,26 @@
+graph TD;
+    subgraph Login_Flow[Login Flow]
+    USER -->
+    SEND_CRENDENTIALS -->
+    SERVER_PROCESS_CREDENTIALS -->
+    |Credenciales correctas| RETURN_ACCESS_TOKEN_AND_REFRESH_TOKEN_AND_USER_DATA
+
+
+    SERVER_PROCESS_CREDENTIALS -->
+    |Credenciales Incorrectas| RETURN_WRONG_CREDENTIALS
+    end
+
+    subgraph  Get_gifts[Get Gifs]
+        LOGGED_USER -->
+        SEND_REQUEST_WITH_WORD_OR_PHRASE_TO_SEARCH_GIFS -->
+        |If founds gifts| COLLECTION_OR_GIFTS
+
+        SEND_REQUEST_WITH_WORD_OR_PHRASE_TO_SEARCH_GIFS -->
+        |If not founds gifts| EMPTY_COLLECTION
+
+        SERVER_PROCESS_CREDENTIALS -->
+        |Credenciales Incorrectas| RETURN_WRONG_CREDENTIALS
+    end
+
+
+
