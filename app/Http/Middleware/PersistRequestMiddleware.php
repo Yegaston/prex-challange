@@ -17,7 +17,6 @@ class PersistRequestMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         $response = $next($request);
 
         $log = [

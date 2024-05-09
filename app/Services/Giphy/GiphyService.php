@@ -43,9 +43,16 @@ class GiphyService
         return json_decode($response->getBody()->getContents());
     }
 
+    function getById(string $id)
+    {
+        $response = $this->client->get('gifs/' . $id);
+
+        return json_decode($response->getBody()->getContents());
+    }
+
     private function makeQuery(array $query)
     {
-        // Workaround to no use getConfig is implement a middleware.
+        // TODO Workaround to no use getConfig and improve this code is implement a middleware.
         return array_merge($query, $this->client->getConfig('query'));
     }
 }

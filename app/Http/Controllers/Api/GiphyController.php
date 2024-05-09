@@ -26,4 +26,9 @@ class GiphyController extends Controller
 
         return $this->response($response ?? [], $response ? 200 : 204);
     }
+
+    public function getById(string $id)
+    {
+        return $this->response($this->giphyService->getById($id));
+    }
 }
