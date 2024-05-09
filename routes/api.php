@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\PersistRequestMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +10,7 @@ Route::namespace('App\Http\Controllers\Api')->prefix('v1')->group(function () {
     Route::get('/login', 'AuthController@noLogged')->name('login');
 
     // Private
-    Route::middleware(['auth:api'])->group(function () {
+    Route::middleware(['auth:api', PersistRequestMiddleware::class])->group(function () {
         Route::get('/user', function (Request $request) {
             return $request->user();
         });
