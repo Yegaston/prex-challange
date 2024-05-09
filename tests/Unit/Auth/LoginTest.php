@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 it('can login', function () {
     $credentials = [
@@ -9,7 +8,7 @@ it('can login', function () {
         'password' => 'password',
     ];
 
-    $response = $this->postJson(route('api.auth.login'), $credentials);
+    $response = $this->postJson(route('api.auth.login.post'), $credentials);
     $response->assertStatus(200);
     $response->assertJsonStructure(['token']);
     $this->assertAuthenticatedAs(User::first());
@@ -22,6 +21,6 @@ it('wrong passwrod no login', function () {
         'password' => 'wrong_password',
     ];
 
-    $response = $this->postJson(route('api.auth.login'), $credentials);
+    $response = $this->postJson(route('api.auth.login.post'), $credentials);
     $response->assertStatus(401);
 });

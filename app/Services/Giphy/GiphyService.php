@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Config;
 class GiphyService
 {
 
-    protected $client;
+    public $client;
 
     public function __construct()
     {
@@ -25,14 +25,18 @@ class GiphyService
             'headers' => [
                 'Accept' => 'application/json',
             ],
-            'query' => [
-                'api_key' => Config::get('giphy.api_key'),
-            ]
+            'query' => []
         ]);
     }
 
     function search(string $q, int $limit = 20, int $offset = 10)
     {
+        $test = $this->makeQuery([
+            'q' => $q,
+            'limit' => $limit,
+            'offset' => $offset
+        ]);
+
         $response = $this->client->get('gifs/search', [
             'query' => $this->makeQuery([
                 'q' => $q,
@@ -61,7 +65,7 @@ class GiphyService
         return $userGif->load('user');
     }
 
-    private function makeQuery(array $query)
+    public function makeQuery(array $query)
     {
         // TODO Workaround to no use getConfig and improve this code is implement a middleware.
         return array_merge($query, $this->client->getConfig('query'));
