@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Giphy;
 
 use App\Http\Requests\JsonRequest;
-use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends JsonRequest
+class GiphySearchRequest extends JsonRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +22,9 @@ class LoginRequest extends JsonRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-            'remember' => 'boolean|sometimes',
+            'query' => 'string|required',
+            'limit' => 'integer|sometimes',
+            'offset' => 'integer|sometimes'
         ];
     }
 }

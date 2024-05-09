@@ -22,4 +22,9 @@ class AuthController extends Controller
             return $this->response(['error' => 'Unauthorized'], 401);
         }
     }
+
+    function noLogged()
+    {
+        return $this->response(['error' => 'Unauthorized'], 401);
+    }
 }
