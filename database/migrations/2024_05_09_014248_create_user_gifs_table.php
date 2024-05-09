@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('persist_requests', function (Blueprint $table) {
+        Schema::create('user_gifs', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->constrained();
-
-            $table->string('path');
-            $table->json('request_body')->nullable();
-            $table->json('response_body')->nullable();
-            $table->string('origin_ip')->nullable();
-            $table->integer('status_code');
+            $table->string('gif_id');
 
             $table->timestamps();
         });
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('persist_requests');
+        Schema::dropIfExists('user_gifs');
     }
 };

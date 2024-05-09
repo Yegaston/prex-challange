@@ -31,4 +31,9 @@ class GiphyController extends Controller
     {
         return $this->response($this->giphyService->getById($id));
     }
+
+    public function userGif(string $id)
+    {
+        return $this->response($this->giphyService->saveUserGif($id));
+    }
 }

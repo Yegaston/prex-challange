@@ -2,6 +2,7 @@
 
 namespace App\Services\Giphy;
 
+use App\Models\UserGif;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 
@@ -48,6 +49,16 @@ class GiphyService
         $response = $this->client->get('gifs/' . $id);
 
         return json_decode($response->getBody()->getContents());
+    }
+
+    function saveUserGif(string $id)
+    {
+        $userGif = UserGif::create([
+            'user_id' => auth()->user()->id,
+            'gif_id' => $id,
+        ]);
+
+        return $userGif->load('user');
     }
 
     private function makeQuery(array $query)
