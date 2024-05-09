@@ -13,16 +13,16 @@ erDiagram
         number USER_ID
     }
 
-    REQUESTS {
+    PERSIST_REQUESTS {
         number USER_ID
-        string SERVICE
+        string PATH
         json REQUEST_BODY
-        number HTTP_STATUS
+        number STATUS_CODE
         json RESPONSE_BODY
-        string REQUEST_IP
+        string ORIGIN_IP
     }
 
 
     USERS ||--o{ USER_GIFTS : owns
 
-    USERS ||--o{ REQUESTS : "made requests"
+    USERS ||--o{ PERSIST_REQUESTS : "made requests"

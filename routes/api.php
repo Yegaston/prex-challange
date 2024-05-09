@@ -16,6 +16,6 @@ Route::namespace('App\Http\Controllers\Api')->prefix('v1')->group(function () {
         });
         Route::get('/gif/search', 'GiphyController@search')->name('api.giphy.search');
         Route::get('/gif/{id}', 'GiphyController@getById')->name('api.giphy.getById');
-        Route::get('/user/gif/{id}', 'GiphyController@userGif')->name('api.giphy.gifUser');
+        Route::post('/user/gif', 'GiphyController@userGif')->name('api.giphy.gifUser');
     });
 });

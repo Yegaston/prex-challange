@@ -55,11 +55,12 @@ class GiphyService
         return json_decode($response->getBody()->getContents());
     }
 
-    function saveUserGif(string $id)
+    function saveUserGif(array $data)
     {
         $userGif = UserGif::create([
             'user_id' => auth()->user()->id,
-            'gif_id' => $id,
+            'gif_id' => $data['gif_id'],
+            'alias' => $data['alias'],
         ]);
 
         return $userGif->load('user');

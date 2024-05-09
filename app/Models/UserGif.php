@@ -16,7 +16,8 @@ class UserGif extends Model
      */
     protected $fillable = [
         'user_id',
-        'gif_id'
+        'gif_id',
+        'alias'
     ];
 
     public function user()

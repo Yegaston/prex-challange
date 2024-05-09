@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Giphy\GiphySearchRequest;
+use App\Http\Requests\Giphy\UserGifRequest;
 use App\Services\Giphy\GiphyService;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,8 @@ class GiphyController extends Controller
         return $this->response($this->giphyService->getById($id));
     }
 
-    public function userGif(string $id)
+    public function userGif(UserGifRequest $request)
     {
-        return $this->response($this->giphyService->saveUserGif($id));
+        return $this->response($this->giphyService->saveUserGif($request->all()));
     }
 }
