@@ -2,7 +2,7 @@
 [mermaid mer](MER.mmd)
 
 # Diagram (😅)
-[mermaid diagram](flow_diagram.mmd)
+[mermaid diagram](flow_diagram.mermaid)
 
 
 # Deploy 
